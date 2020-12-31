@@ -1,0 +1,145 @@
+.page-header {
+    display: block;
+    line-height: 1;
+    @include p(lg);
+    @include shadow(sm);
+
+    @include mq(sm) {
+        @include py(sm);
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    .menu {
+        display: flex;
+        align-items: center;
+        max-width: 1240px;
+        @include mx(auto);
+
+        @include mq(sm) {
+            display: none;
+        }
+
+        .main-link {
+            @include font(accent);
+            @include font-size(xl);
+        }
+
+        .menu-links {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+
+            .left-menu {
+                display: flex;
+                align-items: center;
+                @include ml(xl);
+
+                >* {
+                    @include mx(md);
+                }
+
+                .ks-dropdown {
+                    .button {
+                        font-weight: normal;
+
+                        @include hover-focus {
+                            text-decoration: none;
+                        }
+                    }
+
+                    .dropdown-item>* {
+                        width: 100%;
+                        @include px(none);
+                        @include py(xs);
+
+                        a {
+                            @include py(sm);
+                            @include px(xl);
+                        }
+                    }
+                }
+            }
+
+            .right-menu {
+                display: flex;
+                align-items: center;
+
+                >* {
+                    @include mx(md);
+                }
+
+                .search {
+                    background-color: transparent;
+                    @include p(none);
+                    @include b(solid, xxxs, dark, lighter);
+
+                    .ks-form-field {
+                        .form-input {
+                            border: 0;
+                            @include shadow(none);
+                        }
+
+                        .icon-right {
+                            transform: translate(30%, -55%);
+                            @include m(none);
+
+                            .icon {
+                                @include font-size(xs);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .mobile-menu {
+        display: none;
+        align-items: center;
+        justify-content: space-between;
+
+        @include mq(sm) {
+            display: flex;
+        }
+
+        .main-link {
+            @include font(accent);
+            @include font-size(lg);
+        }
+    }
+
+    .mobile-links {
+        .drawer-body {
+            display: flex;
+            flex-direction: column;
+
+            >* {
+                @include py(md);
+            }
+
+            .ks-accordion {
+                @include b($size: none);
+
+                .accordion-heading {
+                    font-weight: normal;
+                    @include b($size: none);
+                    @include p(none);
+                }
+
+                .accordion-content {
+                    display: flex;
+                    flex-direction: column;
+                    @include b($size: none);
+                    @include py(none);
+
+                    >* {
+                        @include py(md);
+                    }
+                }
+            }
+        }
+    }
+}

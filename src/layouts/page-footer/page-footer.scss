@@ -1,0 +1,10 @@
+.page-footer {
+    display: block;
+    @include p(lg);
+    @include bg-color(light, light);
+
+    .footer-wrapper {
+        max-width: 1240px;
+        @include mx(auto);
+    }
+}
