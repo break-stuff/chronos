@@ -6,5 +6,13 @@
     .footer-wrapper {
         max-width: 1240px;
         @include mx(auto);
+
+        a {
+            text-decoration: none;
+
+            @include hover-focus {
+                text-decoration: none;
+            }
+        }
     }
 }

@@ -50,14 +50,17 @@
                         }
                     }
 
-                    .dropdown-item>* {
-                        width: 100%;
-                        @include px(none);
-                        @include py(xs);
+                    .dropdown-item {
+                        @include my(xs);
 
-                        a {
-                            @include py(sm);
-                            @include px(xl);
+                        >* {
+                            width: 100%;
+                            @include p(none);
+
+                            a {
+                                @include py(sm);
+                                @include px(xl);
+                            }
                         }
                     }
                 }

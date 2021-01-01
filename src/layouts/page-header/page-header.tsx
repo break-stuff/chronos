@@ -1,4 +1,4 @@
-import { Component, h, Host, State, ComponentInterface } from '@stencil/core';
+import { Component, h, State, ComponentInterface } from '@stencil/core';
 import { getCategories, Category } from '../../utils/categoryUtils';
 
 @Component({
@@ -26,7 +26,7 @@ export class PageHeader implements ComponentInterface {
 
     render() {
         return (
-            <Host class="page-header" role="header">
+            <header class="page-header">
                 <div class="menu">
                     <stencil-route-link class="main-link" url="/">Chronos</stencil-route-link>
                     <div class="menu-links">
@@ -75,7 +75,7 @@ export class PageHeader implements ComponentInterface {
                     <stencil-route-link url="/about">About</stencil-route-link>
                     <stencil-route-link url="/contact">Contact</stencil-route-link>
                 </ks-side-drawer>
-            </Host>
+            </header>
         );
     }
 }

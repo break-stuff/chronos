@@ -3,7 +3,7 @@ import { Component, h } from '@stencil/core';
 
 @Component({
     tag: 'cart-page',
-    styleUrl: 'cart-page.css'
+    // styleUrl: 'cart-page.scss'
 })
 export class CartPage {
 
