@@ -19,15 +19,9 @@
     },
     {
         "id": 4,
-        "name": "Pocket Watch",
-        "urlSegment": "pocket",
+        "name": "Accessories",
+        "urlSegment": "accessories",
         "description": "A pocket watch is a type of watch that is specifically designed to be kept in the pocket. Unlike wristwatches that have straps or bracelet, pocket watches are attached to a chain. This enables them to be fastened to a belt loop, or waistcoat and prevent them from falling off. To introduce a bit of tradition into one’s outfit, this timepiece can be worn over a vest."
-    },
-    {
-        "id": 5,
-        "name": "Hybrid",
-        "urlSegment": "hybrid",
-        "description": "From the term itself, this is the type that combines the features of a digital and analog watch. At first glance, it looks like an analog watch, with the hour, minute and second hands. Yet hybrid watches offer much more on their LCD screen. Many wearers prefer to have the classic look of an analog face combined with the modern convenience of apps, notifications and other features that smartwatches offer. Some display time digitally on the LCD while there are also hybrid watches that include fitness trackers, may even be connected to a smartphone, and other features available in common smartwatches."
     },
     {
         "id": 5,
