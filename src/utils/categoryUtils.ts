@@ -1,12 +1,22 @@
 import * as fetch from './fetch';
+import categoryStore from '../store/categoryStore';
 
 export type Category = {
     id: number,
     name: string,
+    imageUrl: string,
     urlSegment: string,
-    description: string
+    description: string,
+    sortOrder: number
 };
 
 export async function getCategories(): Promise<Category[]> {
-    return await fetch.get<Category[]>('/assets/data/categories.json');
+    let categories = categoryStore.categories;
+
+    if(!categories.length) {
+        categories = await fetch.get<Category[]>('/assets/data/categories.json');
+        categoryStore.categories = categories;
+    }
+
+    return categories;
 }
