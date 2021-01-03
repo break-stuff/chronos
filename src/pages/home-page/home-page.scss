@@ -1,4 +1,64 @@
-home-page {
-    font-weight: normal;
-    /* Component styles go here */
+.app main {
+    @include pt(none, true);
+}
+
+.home-page {
+    .hero-image {
+        height: 500px;
+
+        @include mq(sm) {
+            height: 300px;
+        }
+
+        @include mq(xs) {
+            height: 200px;
+        }
+
+        .card-body {
+            margin-right: 7vw;
+
+            @include mq(md) {
+                @include mx(auto);
+            }
+        }
+    }
+
+    .promo {
+        border: 0;
+        @include shadow(none);
+
+        .card-img {
+            width: 50%;
+            @include my(auto);
+
+            @include mq(sm) {
+                width: 100%;
+            }
+        }
+
+        .card-content {
+            width: 50%;
+            height: 100%;
+            @include my(auto);
+
+            @include mq(sm) {
+                width: 100%;
+            }
+
+            .card-body {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                height: 100%;
+                text-align: center;
+                @include p(xxl);
+            }
+        }
+    }
+
+    .categories {
+        .card-img {
+            @include p(xxxl);
+        }
+    }
 }

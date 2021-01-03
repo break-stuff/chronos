@@ -7,5 +7,5 @@ describe('contact-page', () => {
     await page.setContent('<contact-page></contact-page>');
     const element = await page.find('contact-page');
     expect(element).toHaveClass('hydrated');
-  });{cursor}
+  });
 });

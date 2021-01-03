@@ -7,5 +7,5 @@ describe('stories-page', () => {
     await page.setContent('<stories-page></stories-page>');
     const element = await page.find('stories-page');
     expect(element).toHaveClass('hydrated');
-  });{cursor}
+  });
 });

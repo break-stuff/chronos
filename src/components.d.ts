@@ -18,6 +18,8 @@ export namespace Components {
     }
     interface CartPage {
     }
+    interface CategoryGallery {
+    }
     interface CheckoutPage {
     }
     interface ContactPage {
@@ -64,6 +66,12 @@ declare global {
     var HTMLCartPageElement: {
         prototype: HTMLCartPageElement;
         new (): HTMLCartPageElement;
+    };
+    interface HTMLCategoryGalleryElement extends Components.CategoryGallery, HTMLStencilElement {
+    }
+    var HTMLCategoryGalleryElement: {
+        prototype: HTMLCategoryGalleryElement;
+        new (): HTMLCategoryGalleryElement;
     };
     interface HTMLCheckoutPageElement extends Components.CheckoutPage, HTMLStencilElement {
     }
@@ -113,6 +121,7 @@ declare global {
         "app-profile": HTMLAppProfileElement;
         "app-root": HTMLAppRootElement;
         "cart-page": HTMLCartPageElement;
+        "category-gallery": HTMLCategoryGalleryElement;
         "checkout-page": HTMLCheckoutPageElement;
         "contact-page": HTMLContactPageElement;
         "home-page": HTMLHomePageElement;
@@ -133,6 +142,8 @@ declare namespace LocalJSX {
     interface AppRoot {
     }
     interface CartPage {
+    }
+    interface CategoryGallery {
     }
     interface CheckoutPage {
     }
@@ -155,6 +166,7 @@ declare namespace LocalJSX {
         "app-profile": AppProfile;
         "app-root": AppRoot;
         "cart-page": CartPage;
+        "category-gallery": CategoryGallery;
         "checkout-page": CheckoutPage;
         "contact-page": ContactPage;
         "home-page": HomePage;
@@ -173,6 +185,7 @@ declare module "@stencil/core" {
             "app-profile": LocalJSX.AppProfile & JSXBase.HTMLAttributes<HTMLAppProfileElement>;
             "app-root": LocalJSX.AppRoot & JSXBase.HTMLAttributes<HTMLAppRootElement>;
             "cart-page": LocalJSX.CartPage & JSXBase.HTMLAttributes<HTMLCartPageElement>;
+            "category-gallery": LocalJSX.CategoryGallery & JSXBase.HTMLAttributes<HTMLCategoryGalleryElement>;
             "checkout-page": LocalJSX.CheckoutPage & JSXBase.HTMLAttributes<HTMLCheckoutPageElement>;
             "contact-page": LocalJSX.ContactPage & JSXBase.HTMLAttributes<HTMLContactPageElement>;
             "home-page": LocalJSX.HomePage & JSXBase.HTMLAttributes<HTMLHomePageElement>;

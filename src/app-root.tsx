@@ -1,4 +1,10 @@
 import { Component, h, Host } from '@stencil/core';
+import { applyPolyfills, defineCustomElements } from "kickstand-ui/loader";
+
+// Apply the polyfills and bind the custom elements to the window object
+applyPolyfills().then(() => {
+    defineCustomElements();
+});
 
 @Component({
   tag: 'app-root'

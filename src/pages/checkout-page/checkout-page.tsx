@@ -3,7 +3,7 @@ import { Component, h } from '@stencil/core';
 
 @Component({
     tag: 'checkout-page',
-    styleUrl: 'checkout-page.css'
+    // styleUrl: 'checkout-page.css'
 })
 export class CheckoutPage {
 

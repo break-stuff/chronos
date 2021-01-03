@@ -8,26 +8,13 @@ body {
 }
 
 .app {
-    // @include px(lg);
-    min-height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-
-
-    main {
-    }
-
-    .page-header,
-    main,
-    .page-footer {
-        flex-shrink: 0;
+    a {
+        @include color(primary, lighter);
     }
 
     main {
         width: 100%;
         max-width: 100%;
-        flex-grow: 1;
         @include p(lg);
         @include mx(auto);
 

@@ -7,5 +7,5 @@ describe('checkout-page', () => {
     await page.setContent('<checkout-page></checkout-page>');
     const element = await page.find('checkout-page');
     expect(element).toHaveClass('hydrated');
-  });{cursor}
+  });
 });
