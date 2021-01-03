@@ -1,5 +1,8 @@
 import { Config } from '@stencil/core';
 import { sass } from '@stencil/sass';
+import { postcss } from '@stencil/postcss';
+import autoprefixer from 'autoprefixer';
+import cssnano from 'cssnano';
 
 // https://stenciljs.com/docs/config
 
@@ -19,6 +22,12 @@ export const config: Config = {
     sass({
       injectGlobalPaths: [
         './node_modules/kickstand-ui/src/scss/00_Abstracts/index.scss'
+      ]
+    }),
+    postcss({
+      plugins: [
+        autoprefixer(),
+        cssnano()
       ]
     })
   ]
