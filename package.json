@@ -1,11 +1,12 @@
 {
-  "name": "watch-me",
+  "name": "chronos",
   "private": true,
   "version": "0.0.1",
-  "description": "Stencil App Starter",
+  "description": "A site built entirely with web components",
   "scripts": {
-    "build": "stencil build",
     "dev": "stencil build --dev --watch --serve",
+    "build": "stencil build",
+    "deploy": "./deploy.sh",
     "test": "stencil test --spec --e2e",
     "test.watch": "stencil test --spec --e2e --watchAll",
     "generate": "stencil generate"
