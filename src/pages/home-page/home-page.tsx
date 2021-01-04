@@ -1,18 +1,11 @@
 import { Component, h, Host, State } from '@stencil/core';
-import { Category, getCategories } from '../../utils/categoryUtils';
+import { Category, getAllCategories } from '../../utils/categoryUtils';
 
 @Component({
     tag: 'home-page',
     styleUrl: 'home-page.scss'
 })
 export class HomePage {
-    @State() categories: Category[] = [];
-
-    async componentDidLoad() {
-        let response = await getCategories();
-        this.categories = response.sort((a, b) => a.sortOrder - b.sortOrder);
-    }
-
     render() {
         return (
             <Host class="home-page">

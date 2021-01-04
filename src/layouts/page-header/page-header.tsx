@@ -1,5 +1,5 @@
 import { Component, h, State, ComponentInterface, Host } from '@stencil/core';
-import { getCategories, Category } from '../../utils/categoryUtils';
+import { getAllCategories, Category } from '../../utils/categoryUtils';
 
 @Component({
     tag: 'page-header',
@@ -10,7 +10,7 @@ export class PageHeader implements ComponentInterface {
     @State() categories: Category[];
 
     async componentWillLoad() {
-        let response = await getCategories();
+        let response = await getAllCategories();
         this.categories = response.sort((a: any, b: any) => {
             let aName = a.name.toLowerCase();
             let bName = b.name.toLowerCase();

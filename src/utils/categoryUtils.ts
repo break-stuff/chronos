@@ -10,7 +10,7 @@ export type Category = {
     sortOrder: number
 };
 
-export async function getCategories(): Promise<Category[]> {
+export async function getAllCategories(): Promise<Category[]> {
     let categories = categoryStore.categories;
 
     if(!categories.length) {

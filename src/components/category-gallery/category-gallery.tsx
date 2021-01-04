@@ -1,5 +1,5 @@
 import { Component, h, State, Host } from '@stencil/core';
-import { Category, getCategories } from '../../utils/categoryUtils';
+import { Category, getAllCategories } from '../../utils/categoryUtils';
 
 @Component({
     tag: 'category-gallery',
@@ -8,8 +8,8 @@ import { Category, getCategories } from '../../utils/categoryUtils';
 export class CategoryGallery {
     @State() categories: Category[] = [];
 
-    async componentDidLoad() {
-        let response = await getCategories();
+    async componentWillLoad() {
+        let response = await getAllCategories();
         this.categories = response.sort((a, b) => a.sortOrder - b.sortOrder);
     }
 
