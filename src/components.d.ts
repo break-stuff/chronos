@@ -9,11 +9,6 @@ import { MatchResults } from "@stencil/router";
 export namespace Components {
     interface AboutPage {
     }
-    interface AppHome {
-    }
-    interface AppProfile {
-        "match": MatchResults;
-    }
     interface AppRoot {
     }
     interface CartPage {
@@ -42,18 +37,6 @@ declare global {
     var HTMLAboutPageElement: {
         prototype: HTMLAboutPageElement;
         new (): HTMLAboutPageElement;
-    };
-    interface HTMLAppHomeElement extends Components.AppHome, HTMLStencilElement {
-    }
-    var HTMLAppHomeElement: {
-        prototype: HTMLAppHomeElement;
-        new (): HTMLAppHomeElement;
-    };
-    interface HTMLAppProfileElement extends Components.AppProfile, HTMLStencilElement {
-    }
-    var HTMLAppProfileElement: {
-        prototype: HTMLAppProfileElement;
-        new (): HTMLAppProfileElement;
     };
     interface HTMLAppRootElement extends Components.AppRoot, HTMLStencilElement {
     }
@@ -117,8 +100,6 @@ declare global {
     };
     interface HTMLElementTagNameMap {
         "about-page": HTMLAboutPageElement;
-        "app-home": HTMLAppHomeElement;
-        "app-profile": HTMLAppProfileElement;
         "app-root": HTMLAppRootElement;
         "cart-page": HTMLCartPageElement;
         "category-gallery": HTMLCategoryGalleryElement;
@@ -133,11 +114,6 @@ declare global {
 }
 declare namespace LocalJSX {
     interface AboutPage {
-    }
-    interface AppHome {
-    }
-    interface AppProfile {
-        "match"?: MatchResults;
     }
     interface AppRoot {
     }
@@ -162,8 +138,6 @@ declare namespace LocalJSX {
     }
     interface IntrinsicElements {
         "about-page": AboutPage;
-        "app-home": AppHome;
-        "app-profile": AppProfile;
         "app-root": AppRoot;
         "cart-page": CartPage;
         "category-gallery": CategoryGallery;
@@ -181,8 +155,6 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "about-page": LocalJSX.AboutPage & JSXBase.HTMLAttributes<HTMLAboutPageElement>;
-            "app-home": LocalJSX.AppHome & JSXBase.HTMLAttributes<HTMLAppHomeElement>;
-            "app-profile": LocalJSX.AppProfile & JSXBase.HTMLAttributes<HTMLAppProfileElement>;
             "app-root": LocalJSX.AppRoot & JSXBase.HTMLAttributes<HTMLAppRootElement>;
             "cart-page": LocalJSX.CartPage & JSXBase.HTMLAttributes<HTMLCartPageElement>;
             "category-gallery": LocalJSX.CategoryGallery & JSXBase.HTMLAttributes<HTMLCategoryGalleryElement>;
