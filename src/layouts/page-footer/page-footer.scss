@@ -9,6 +9,7 @@
 
         a {
             text-decoration: none;
+            @include color(dark);
 
             @include hover-focus {
                 text-decoration: none;
