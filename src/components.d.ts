@@ -25,6 +25,11 @@ export namespace Components {
     }
     interface PageHeader {
     }
+    interface ProductDetailsPage {
+    }
+    interface ProductSummary {
+        "product": any;
+    }
     interface ProductsPage {
         "match": MatchResults;
     }
@@ -86,6 +91,18 @@ declare global {
         prototype: HTMLPageHeaderElement;
         new (): HTMLPageHeaderElement;
     };
+    interface HTMLProductDetailsPageElement extends Components.ProductDetailsPage, HTMLStencilElement {
+    }
+    var HTMLProductDetailsPageElement: {
+        prototype: HTMLProductDetailsPageElement;
+        new (): HTMLProductDetailsPageElement;
+    };
+    interface HTMLProductSummaryElement extends Components.ProductSummary, HTMLStencilElement {
+    }
+    var HTMLProductSummaryElement: {
+        prototype: HTMLProductSummaryElement;
+        new (): HTMLProductSummaryElement;
+    };
     interface HTMLProductsPageElement extends Components.ProductsPage, HTMLStencilElement {
     }
     var HTMLProductsPageElement: {
@@ -108,6 +125,8 @@ declare global {
         "home-page": HTMLHomePageElement;
         "page-footer": HTMLPageFooterElement;
         "page-header": HTMLPageHeaderElement;
+        "product-details-page": HTMLProductDetailsPageElement;
+        "product-summary": HTMLProductSummaryElement;
         "products-page": HTMLProductsPageElement;
         "stories-page": HTMLStoriesPageElement;
     }
@@ -131,6 +150,11 @@ declare namespace LocalJSX {
     }
     interface PageHeader {
     }
+    interface ProductDetailsPage {
+    }
+    interface ProductSummary {
+        "product"?: any;
+    }
     interface ProductsPage {
         "match"?: MatchResults;
     }
@@ -146,6 +170,8 @@ declare namespace LocalJSX {
         "home-page": HomePage;
         "page-footer": PageFooter;
         "page-header": PageHeader;
+        "product-details-page": ProductDetailsPage;
+        "product-summary": ProductSummary;
         "products-page": ProductsPage;
         "stories-page": StoriesPage;
     }
@@ -163,6 +189,8 @@ declare module "@stencil/core" {
             "home-page": LocalJSX.HomePage & JSXBase.HTMLAttributes<HTMLHomePageElement>;
             "page-footer": LocalJSX.PageFooter & JSXBase.HTMLAttributes<HTMLPageFooterElement>;
             "page-header": LocalJSX.PageHeader & JSXBase.HTMLAttributes<HTMLPageHeaderElement>;
+            "product-details-page": LocalJSX.ProductDetailsPage & JSXBase.HTMLAttributes<HTMLProductDetailsPageElement>;
+            "product-summary": LocalJSX.ProductSummary & JSXBase.HTMLAttributes<HTMLProductSummaryElement>;
             "products-page": LocalJSX.ProductsPage & JSXBase.HTMLAttributes<HTMLProductsPageElement>;
             "stories-page": LocalJSX.StoriesPage & JSXBase.HTMLAttributes<HTMLStoriesPageElement>;
         }

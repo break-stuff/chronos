@@ -21,6 +21,7 @@ export class AppRoot {
               <stencil-route-switch scrollTopOffset={0}>
                 <stencil-route url="/" component="home-page" exact={true} />
                 <stencil-route url="/products/:category" component="products-page" />
+                <stencil-route url="/product/:sku" component="product-detail-page" />
                 <stencil-route url="/stories" component="stories-page" />
                 <stencil-route url="/about" component="about-page" />
                 <stencil-route url="/contact" component="contact-page" />
