@@ -30,5 +30,10 @@ export const config: Config = {
         cssnano()
       ]
     })
-  ]
+  ],
+  buildEs5: 'prod',
+  extras: {
+    cssVarsShim: true,
+    shadowDomShim: false
+  }
 };
