@@ -1,0 +1,19 @@
+.star-component {
+    display: block;
+    position: relative;
+
+    // .score-wrap {
+    //     display: inline-block;
+    // }
+    .rating-stars {
+        position: absolute;
+        overflow: hidden;
+        white-space: nowrap;
+        top: 0;
+        left: 0;
+    }
+
+    .score {
+        @include ml(sm);
+    }
+}

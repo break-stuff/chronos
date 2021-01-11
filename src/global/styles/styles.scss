@@ -22,6 +22,10 @@ body {
         .content-wrapper {
             max-width: 1240px;
             @include mx(auto);
+
+            .ks-icon {
+                line-height: 1;
+            }
         }
     }
 }
