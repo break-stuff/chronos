@@ -1,3 +1,55 @@
 .product-summary {
-    /* Component styles go here */
+    .ks-card {
+        height: 100%;
+
+        .ks-img {
+            @include p(xxxl)
+        }
+
+        .card-content {
+            .card-body {
+                height: 100%;
+
+                .text {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    height: 100%;
+    
+                    .product-name {
+                        line-height: 1.15;
+                        @include font-size(md);
+                        @include mb(md);
+                        @include font(base);
+
+                        a {
+                            text-decoration: none;
+                            @include color(dark);
+
+                            @include hover-focus {
+                                text-decoration: underline;
+                            }
+                        }
+                    }
+
+                    .prices {
+                        .price {
+                            @include font-size(md);
+                        }
+
+                        .discount-price {
+                            font-style: italic;
+                            @include ml(md);
+                        }
+                    }
+                }
+            }
+
+            .card-footer {
+                .button {
+                    display: block;
+                }
+            }
+        }
+    }
 }
