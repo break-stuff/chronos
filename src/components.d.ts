@@ -5,6 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { Product } from "./utils/productUtils";
 import { MatchResults } from "@stencil/router";
 export namespace Components {
     interface AboutPage {
@@ -28,10 +29,13 @@ export namespace Components {
     interface ProductDetailsPage {
     }
     interface ProductSummary {
-        "product": any;
+        "product": Product;
     }
     interface ProductsPage {
         "match": MatchResults;
+    }
+    interface StarComponent {
+        "rating": number;
     }
     interface StoriesPage {
     }
@@ -109,6 +113,12 @@ declare global {
         prototype: HTMLProductsPageElement;
         new (): HTMLProductsPageElement;
     };
+    interface HTMLStarComponentElement extends Components.StarComponent, HTMLStencilElement {
+    }
+    var HTMLStarComponentElement: {
+        prototype: HTMLStarComponentElement;
+        new (): HTMLStarComponentElement;
+    };
     interface HTMLStoriesPageElement extends Components.StoriesPage, HTMLStencilElement {
     }
     var HTMLStoriesPageElement: {
@@ -128,6 +138,7 @@ declare global {
         "product-details-page": HTMLProductDetailsPageElement;
         "product-summary": HTMLProductSummaryElement;
         "products-page": HTMLProductsPageElement;
+        "star-component": HTMLStarComponentElement;
         "stories-page": HTMLStoriesPageElement;
     }
 }
@@ -153,10 +164,13 @@ declare namespace LocalJSX {
     interface ProductDetailsPage {
     }
     interface ProductSummary {
-        "product"?: any;
+        "product"?: Product;
     }
     interface ProductsPage {
         "match"?: MatchResults;
+    }
+    interface StarComponent {
+        "rating"?: number;
     }
     interface StoriesPage {
     }
@@ -173,6 +187,7 @@ declare namespace LocalJSX {
         "product-details-page": ProductDetailsPage;
         "product-summary": ProductSummary;
         "products-page": ProductsPage;
+        "star-component": StarComponent;
         "stories-page": StoriesPage;
     }
 }
@@ -192,6 +207,7 @@ declare module "@stencil/core" {
             "product-details-page": LocalJSX.ProductDetailsPage & JSXBase.HTMLAttributes<HTMLProductDetailsPageElement>;
             "product-summary": LocalJSX.ProductSummary & JSXBase.HTMLAttributes<HTMLProductSummaryElement>;
             "products-page": LocalJSX.ProductsPage & JSXBase.HTMLAttributes<HTMLProductsPageElement>;
+            "star-component": LocalJSX.StarComponent & JSXBase.HTMLAttributes<HTMLStarComponentElement>;
             "stories-page": LocalJSX.StoriesPage & JSXBase.HTMLAttributes<HTMLStoriesPageElement>;
         }
     }
