@@ -4,7 +4,7 @@ import productStore from '../store/productStore';
 export type Product = {
     id: number,
     url: string,
-    categoryId: string,
+    categoryId: number,
     sku: string,
     listPrice: number,
     salePrice: number,
