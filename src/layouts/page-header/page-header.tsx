@@ -1,5 +1,6 @@
 import { Component, h, State, ComponentInterface, Host } from '@stencil/core';
 import { getAllCategories, Category } from '../../utils/categoryUtils';
+import { sortArray } from "../../utils/arrayUtils";
 
 @Component({
     tag: 'page-header',
@@ -11,12 +12,7 @@ export class PageHeader implements ComponentInterface {
 
     async componentWillLoad() {
         let response = await getAllCategories();
-        this.categories = response.sort((a: any, b: any) => {
-            let aName = a.name.toLowerCase();
-            let bName = b.name.toLowerCase();
-
-            return aName < bName ? -1 : aName > bName ? 1 : 0;
-        });
+        this.categories = sortArray(response, 'name');
     }
 
     componentDidRender() {
@@ -33,6 +29,9 @@ export class PageHeader implements ComponentInterface {
                         <div class="menu-links">
                             <div class="left-menu">
                                 <ks-dropdown text="Shop" display="link">
+                                    <ks-dropdown-item>
+                                        <stencil-route-link url="/products/view-all">View All</stencil-route-link>
+                                    </ks-dropdown-item>
                                     {this.categories.map(x => (<ks-dropdown-item>
                                         <stencil-route-link url={`/products/${x.urlSegment}`}>{x.name}</stencil-route-link>
                                     </ks-dropdown-item>))}
