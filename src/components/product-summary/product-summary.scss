@@ -49,6 +49,14 @@
                 .button {
                     display: block;
                 }
+
+                .quantity-control {
+                    text-align: center;
+
+                    .form-label {
+                        align-items: center;
+                    }
+                }
             }
         }
     }
