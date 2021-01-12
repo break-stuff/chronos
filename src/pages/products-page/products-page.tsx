@@ -17,7 +17,7 @@ export class ProductsPage {
     @State() selectedCategory: Category;
     @State() selectedSort: string;
     @State() pageNumber: number = 1;
-    @State() pageCount: number = 1;
+    @State() pageCount: number = 0;
     @State() pageSize: number = 12;
     @State() pageNumbers: number[] = [];
 
@@ -67,8 +67,7 @@ export class ProductsPage {
 
     private filterProductsByUrlSegment() {
         this.selectedCategory = this.categories.find(x => x.urlSegment === this.match.params.category);
-
-        this.filterProductsBySelectedCategory();
+        this.getProductList();
     }
 
     private filterProductsBySelectedCategory() {
@@ -126,11 +125,13 @@ export class ProductsPage {
                     ? <div class="paging-controls display-flex justify-center mt-xxxl">
                         <ks-button-bar class="mx-auto">
                             <ks-button display="hollow" disabled={this.pageNumber <= 1} onClick={() => this.setPageNumber(--this.pageNumber)}>
-                                <ks-icon icon="chevron_left"></ks-icon>
+                                <ks-icon icon="chevron_left" label="previous page"></ks-icon>
                             </ks-button>
-                            {this.pageNumbers.map(x => <ks-button display="hollow" onClick={() => this.setPageNumber(x)} button-class={x === this.pageNumber ? 'text-bold text-underline' : 'text-normal'}>{x}</ks-button>)}
+                            {this.pageNumbers.map(x => <ks-button display="hollow" onClick={() => this.setPageNumber(x)} button-class={x === this.pageNumber ? 'text-bold text-underline' : 'text-normal'}>
+                                <span class="sr-only">page</span> {x}
+                            </ks-button>)}
                             <ks-button display="hollow" disabled={this.pageNumber >= this.pageCount} onClick={() => this.setPageNumber(++this.pageNumber)}>
-                                <ks-icon icon="chevron_right"></ks-icon>
+                                <ks-icon icon="chevron_right" label="next page"></ks-icon>
                             </ks-button>
                         </ks-button-bar>
                     </div>
