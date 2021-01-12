@@ -12,7 +12,7 @@ export class PageFooter {
                 <div class="footer-wrapper">
                     <ks-row>
                         <ks-column>
-                            <h3>Quick Links</h3>
+                            <h2>Quick Links</h2>
                             <div class="display-flex align-center">
                                 <stencil-route-link class="mr-md" url="/products">Products</stencil-route-link>
                                 <stencil-route-link class="mx-md" url="/stories">Stories</stencil-route-link>
@@ -21,7 +21,7 @@ export class PageFooter {
                             </div>
                         </ks-column>
                         <ks-column>
-                            <h3>Newsletter</h3>
+                            <h2>Newsletter</h2>
                             <ks-form class="p-none b-none bg-transparent" inline>
                                 <ks-form-field type="email" label="Let us help you stay in touch" placeholder="Email" required hide-label></ks-form-field>
                                 <ks-button type="submit">
