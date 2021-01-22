@@ -1,0 +1,14 @@
+.cart-row {
+    &[aria-hidden="true"] {
+        display: none;
+    }
+
+    .ks-img {
+        img {
+            width: auto;
+            height: 100px;
+            @include ml(md);
+            @include my(lg);
+        }
+    }
+}

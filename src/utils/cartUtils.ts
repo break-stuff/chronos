@@ -5,7 +5,8 @@ export type CartItem = {
     sku: string,
     name: string,
     price: number,
-    quantity: number
+    quantity: number,
+    imageUrl: string
 };
 
 export function getCart(): CartItem[] {
@@ -19,6 +20,8 @@ export function updateCart(sku: string, quantity: number) {
         return;
 
     cartItem.quantity = quantity;
+
+    cartStore.items = [...cartStore.items];
 }
 
 export function addToCart(product: Product, quantity: number): void {
@@ -26,6 +29,7 @@ export function addToCart(product: Product, quantity: number): void {
 
     if (cartItem) {
         cartItem.quantity += quantity;
+        cartStore.items = [...cartStore.items];
         return;
     }
 
@@ -33,10 +37,11 @@ export function addToCart(product: Product, quantity: number): void {
         sku: product.sku,
         name: product.name,
         price: product.salePrice ? product.salePrice : product.listPrice,
-        quantity: quantity
+        quantity: quantity,
+        imageUrl: product.images[0]
     };
 
-    cartStore.items.push(cartItem);
+    cartStore.items = [...cartStore.items, cartItem];
 }
 
 export function removeFromCart(sku: string) {
