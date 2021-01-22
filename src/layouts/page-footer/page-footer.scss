@@ -2,6 +2,7 @@
     display: block;
     @include p(lg);
     @include bg-color(light, light);
+    @include b-t();
 
     .footer-wrapper {
         max-width: 1240px;

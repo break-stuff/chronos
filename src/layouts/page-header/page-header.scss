@@ -1,6 +1,7 @@
 .page-header {
     display: block;
     line-height: 1;
+    background-color: white;
     @include p(lg);
     @include shadow(sm);
 
