@@ -21,11 +21,14 @@ export class AppRoot {
               <stencil-route-switch scrollTopOffset={0}>
                 <stencil-route url="/" component="home-page" exact={true} />
                 <stencil-route url="/products/:category" component="products-page" />
-                <stencil-route url="/product/:sku" component="product-detail-page" />
+                <stencil-route url="/product/:sku" component="product-details-page" />
                 <stencil-route url="/stories" component="stories-page" />
                 <stencil-route url="/about" component="about-page" />
                 <stencil-route url="/contact" component="contact-page" />
+                <stencil-route url="/cart" component="cart-page" />
+                <stencil-route url="/checkout" component="checkout-page" />
                 <stencil-route url="/profile/:name" component="app-profile" />
+                <stencil-route component="catch-all" />
               </stencil-route-switch>
             </stencil-router>
           </div>
