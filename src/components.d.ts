@@ -5,14 +5,26 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { Product } from "./utils/productUtils";
+import { CartItem } from "./utils/cartUtils";
 import { MatchResults } from "@stencil/router";
+import { Product } from "./utils/productUtils";
 export namespace Components {
     interface AboutPage {
     }
     interface AppRoot {
     }
     interface CartPage {
+    }
+    interface CartRow {
+        "display": boolean;
+        "item": CartItem;
+        "quantity": number;
+    }
+    interface CartSummary {
+        "hide": () => Promise<void>;
+        "show": () => Promise<void>;
+    }
+    interface CatchAll {
     }
     interface CategoryGallery {
     }
@@ -27,6 +39,7 @@ export namespace Components {
     interface PageHeader {
     }
     interface ProductDetailsPage {
+        "match": MatchResults;
     }
     interface ProductSummary {
         "product": Product;
@@ -58,6 +71,24 @@ declare global {
     var HTMLCartPageElement: {
         prototype: HTMLCartPageElement;
         new (): HTMLCartPageElement;
+    };
+    interface HTMLCartRowElement extends Components.CartRow, HTMLStencilElement {
+    }
+    var HTMLCartRowElement: {
+        prototype: HTMLCartRowElement;
+        new (): HTMLCartRowElement;
+    };
+    interface HTMLCartSummaryElement extends Components.CartSummary, HTMLStencilElement {
+    }
+    var HTMLCartSummaryElement: {
+        prototype: HTMLCartSummaryElement;
+        new (): HTMLCartSummaryElement;
+    };
+    interface HTMLCatchAllElement extends Components.CatchAll, HTMLStencilElement {
+    }
+    var HTMLCatchAllElement: {
+        prototype: HTMLCatchAllElement;
+        new (): HTMLCatchAllElement;
     };
     interface HTMLCategoryGalleryElement extends Components.CategoryGallery, HTMLStencilElement {
     }
@@ -129,6 +160,9 @@ declare global {
         "about-page": HTMLAboutPageElement;
         "app-root": HTMLAppRootElement;
         "cart-page": HTMLCartPageElement;
+        "cart-row": HTMLCartRowElement;
+        "cart-summary": HTMLCartSummaryElement;
+        "catch-all": HTMLCatchAllElement;
         "category-gallery": HTMLCategoryGalleryElement;
         "checkout-page": HTMLCheckoutPageElement;
         "contact-page": HTMLContactPageElement;
@@ -149,6 +183,17 @@ declare namespace LocalJSX {
     }
     interface CartPage {
     }
+    interface CartRow {
+        "display"?: boolean;
+        "item"?: CartItem;
+        "onDelete"?: (event: CustomEvent<any>) => void;
+        "onUpdate"?: (event: CustomEvent<any>) => void;
+        "quantity"?: number;
+    }
+    interface CartSummary {
+    }
+    interface CatchAll {
+    }
     interface CategoryGallery {
     }
     interface CheckoutPage {
@@ -162,8 +207,10 @@ declare namespace LocalJSX {
     interface PageHeader {
     }
     interface ProductDetailsPage {
+        "match"?: MatchResults;
     }
     interface ProductSummary {
+        "onAdd"?: (event: CustomEvent<any>) => void;
         "product"?: Product;
     }
     interface ProductsPage {
@@ -178,6 +225,9 @@ declare namespace LocalJSX {
         "about-page": AboutPage;
         "app-root": AppRoot;
         "cart-page": CartPage;
+        "cart-row": CartRow;
+        "cart-summary": CartSummary;
+        "catch-all": CatchAll;
         "category-gallery": CategoryGallery;
         "checkout-page": CheckoutPage;
         "contact-page": ContactPage;
@@ -198,6 +248,9 @@ declare module "@stencil/core" {
             "about-page": LocalJSX.AboutPage & JSXBase.HTMLAttributes<HTMLAboutPageElement>;
             "app-root": LocalJSX.AppRoot & JSXBase.HTMLAttributes<HTMLAppRootElement>;
             "cart-page": LocalJSX.CartPage & JSXBase.HTMLAttributes<HTMLCartPageElement>;
+            "cart-row": LocalJSX.CartRow & JSXBase.HTMLAttributes<HTMLCartRowElement>;
+            "cart-summary": LocalJSX.CartSummary & JSXBase.HTMLAttributes<HTMLCartSummaryElement>;
+            "catch-all": LocalJSX.CatchAll & JSXBase.HTMLAttributes<HTMLCatchAllElement>;
             "category-gallery": LocalJSX.CategoryGallery & JSXBase.HTMLAttributes<HTMLCategoryGalleryElement>;
             "checkout-page": LocalJSX.CheckoutPage & JSXBase.HTMLAttributes<HTMLCheckoutPageElement>;
             "contact-page": LocalJSX.ContactPage & JSXBase.HTMLAttributes<HTMLContactPageElement>;

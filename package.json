@@ -24,6 +24,6 @@
   },
   "license": "MIT",
   "dependencies": {
-    "kickstand-ui": "^2.3.2"
+    "kickstand-ui": "^2.4.3"
   }
 }
