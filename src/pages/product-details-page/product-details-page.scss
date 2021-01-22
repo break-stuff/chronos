@@ -1,3 +1,68 @@
 .product-details-page {
-    /* Component styles go here */
+    .product-carousel {
+        display: flex;
+        flex-direction: row-reverse;
+        background-color: white;
+        @include p(lg);
+        @include b();
+
+        @include mq(md) {
+            flex-direction: column;
+        }
+
+        .thumbnails {
+            flex-direction: column;
+            align-items: flex-end;
+            @include mr(md);
+
+            @include mq(md) {
+                flex-direction: row;
+                flex-wrap: wrap;
+                align-items: center;
+            }
+
+            .thumbnail {
+                width: 75px;
+                background-color: white;
+                flex-grow: unset;
+                flex-basis: unset;
+                @include p(md);
+                @include m(md);
+
+                @include mq(sm) {
+                    width: 50px;
+                }
+
+                &[aria-selected="true"] {
+                    @include b();
+                }
+            }
+        }
+    }
+
+    .product-details {
+        background-color: white;
+        @include p(lg);
+        @include b();
+    }
+
+    .purchased-together {
+        .products {
+            max-width: 275px;
+
+            .ks-img {
+                max-width: 100px;
+            }
+        }
+    }
+
+    .related-products {
+        .heading {
+            @include font-size(lg);
+
+            @include mq(xs) {
+                @include font-size(md);
+            }
+        }
+    }
 }

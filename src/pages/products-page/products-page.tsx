@@ -1,8 +1,9 @@
-import { Component, h, Prop, State, Watch, Host } from '@stencil/core';
+import { Component, h, Prop, State, Watch, Host, Listen } from '@stencil/core';
 import { MatchResults } from '@stencil/router';
 import { getAllProducts, Product } from '../../utils/productUtils';
 import { Category, getAllCategories } from '../../utils/categoryUtils';
 import { sortArray, pageArray } from "../../utils/arrayUtils";
+import { addToCart } from "../../utils/cartUtils";
 
 @Component({
     tag: 'products-page',
@@ -18,12 +19,17 @@ export class ProductsPage {
     @State() selectedSort: string;
     @State() pageNumber: number = 1;
     @State() pageCount: number = 0;
-    @State() pageSize: number = 12;
+    @State() pageSize: number = 8;
     @State() pageNumbers: number[] = [];
 
     @Watch('match')
     watchHandler() {
         this.filterProductsByUrlSegment();
+    }
+
+    @Listen('add')
+    addProductHandler(event: CustomEvent) {
+        addToCart(event.detail, 1);
     }
 
     async componentWillLoad() {
@@ -33,7 +39,7 @@ export class ProductsPage {
     }
 
     componentDidLoad() {
-        this.getProductList();
+        this.filterProductsByUrlSegment();
     }
 
     private categoryChangedHandler(categoryId: any) {
@@ -66,7 +72,10 @@ export class ProductsPage {
     }
 
     private filterProductsByUrlSegment() {
-        this.selectedCategory = this.categories.find(x => x.urlSegment === this.match.params.category);
+        this.selectedCategory = this.categories.find(x => x.urlSegment === this.match.params.category) 
+            || this.categories.find(x => x.urlSegment === 'view-all');
+        console.log(this.match.params.category);
+        
         this.getProductList();
     }
 
@@ -96,19 +105,24 @@ export class ProductsPage {
     private setPageNumber(page: number) {
         this.pageNumber = page;
         this.getProductList();
+        setTimeout(() => {
+            console.log('SCROLLING');
+            
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        });
     }
 
     render() {
         return (
             <Host class="products-page">
-                <div class="page-heading display-flex space-between align-end my-lg">
+                <div class="page-heading display-flex space-between align-end md:flex-column md:align-start my-lg">
                     <h1 class="mb-none">{this.selectedCategory ? this.selectedCategory.name : 'All Products'}</h1>
-                    <div class="page-controls display-flex w-40">
-                        <ks-form-field type="select" label="Categories" size="sm" class="ml-lg w-100" onUpdated={(e) => this.categoryChangedHandler(e.detail.value)}>
+                    <div class="page-controls display-flex w-40 md:w-66 sm:w-100">
+                        <ks-form-field type="select" label="Categories" size="sm" class="ml-lg md:ml-none w-100" onUpdated={(e) => this.categoryChangedHandler(e.detail.value)}>
                             <option value="" selected={!this.selectedCategory}>View All</option>
                             {this.categories.map(x => <option value={x.id} selected={x.id === this.selectedCategory?.id}>{x.name}</option>)}
                         </ks-form-field>
-                        <ks-form-field type="select" label="Sort" size="sm" class="ml-lg w-100" onUpdated={(e) => this.sortChangedHandler(e.detail.value)}>
+                        <ks-form-field type="select" label="Sort" size="sm" class="ml-xl w-100" onUpdated={(e) => this.sortChangedHandler(e.detail.value)}>
                             <option value="">Default</option>
                             <option value="a-z">A-Z</option>
                             <option value="z-a">Z-A</option>
@@ -119,11 +133,11 @@ export class ProductsPage {
                     </div>
                 </div>
                 <div class="display-flex flex-wrap -m-md">
-                    {this.filteredProducts.map(x => <product-summary product={x} class="w-25 p-md"></product-summary>)}
+                    {this.filteredProducts.map(x => <product-summary product={x} class="w-25 md:w-33 sm:w-50 xs:w-100 p-md"></product-summary>)}
                 </div>
                 {this.pageNumbers.length > 1
                     ? <div class="paging-controls display-flex justify-center mt-xxxl">
-                        <ks-button-bar class="mx-auto">
+                        <ks-button-bar class="mx-auto bg-white">
                             <ks-button display="hollow" disabled={this.pageNumber <= 1} onClick={() => this.setPageNumber(--this.pageNumber)}>
                                 <ks-icon icon="chevron_left" label="previous page"></ks-icon>
                             </ks-button>
