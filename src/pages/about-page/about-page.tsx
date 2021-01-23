@@ -11,7 +11,7 @@ export class AboutPage {
 
     render() {
         return (
-            <div style={{maxWidth: '660px'}} class="mx-auto -mt-xl p-xxxl">
+            <div class="mx-auto w-50 md:w-75 sm:w-100 my-xl p-xxxl b-xxxs bg-white">
                 <h1>About This Site</h1>
 
                 <h2>Media</h2>
