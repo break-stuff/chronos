@@ -50,8 +50,6 @@ export namespace Components {
     interface StarComponent {
         "rating": number;
     }
-    interface StoriesPage {
-    }
 }
 declare global {
     interface HTMLAboutPageElement extends Components.AboutPage, HTMLStencilElement {
@@ -150,12 +148,6 @@ declare global {
         prototype: HTMLStarComponentElement;
         new (): HTMLStarComponentElement;
     };
-    interface HTMLStoriesPageElement extends Components.StoriesPage, HTMLStencilElement {
-    }
-    var HTMLStoriesPageElement: {
-        prototype: HTMLStoriesPageElement;
-        new (): HTMLStoriesPageElement;
-    };
     interface HTMLElementTagNameMap {
         "about-page": HTMLAboutPageElement;
         "app-root": HTMLAppRootElement;
@@ -173,7 +165,6 @@ declare global {
         "product-summary": HTMLProductSummaryElement;
         "products-page": HTMLProductsPageElement;
         "star-component": HTMLStarComponentElement;
-        "stories-page": HTMLStoriesPageElement;
     }
 }
 declare namespace LocalJSX {
@@ -219,8 +210,6 @@ declare namespace LocalJSX {
     interface StarComponent {
         "rating"?: number;
     }
-    interface StoriesPage {
-    }
     interface IntrinsicElements {
         "about-page": AboutPage;
         "app-root": AppRoot;
@@ -238,7 +227,6 @@ declare namespace LocalJSX {
         "product-summary": ProductSummary;
         "products-page": ProductsPage;
         "star-component": StarComponent;
-        "stories-page": StoriesPage;
     }
 }
 export { LocalJSX as JSX };
@@ -261,7 +249,6 @@ declare module "@stencil/core" {
             "product-summary": LocalJSX.ProductSummary & JSXBase.HTMLAttributes<HTMLProductSummaryElement>;
             "products-page": LocalJSX.ProductsPage & JSXBase.HTMLAttributes<HTMLProductsPageElement>;
             "star-component": LocalJSX.StarComponent & JSXBase.HTMLAttributes<HTMLStarComponentElement>;
-            "stories-page": LocalJSX.StoriesPage & JSXBase.HTMLAttributes<HTMLStoriesPageElement>;
         }
     }
 }

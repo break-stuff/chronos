@@ -135,7 +135,7 @@ export class CheckoutPage {
                                     </div>
                                     <div class="w-30 text-md text-right">{formatCurrency(x.price * x.quantity)}</div>
                                 </div>)}
-                                <div class="display-flex space-between text-lg">
+                                <div class="display-flex space-between text-lg pt-lg b-t-xxxs">
                                     <span>Total:</span>
                                     <span>{formatCurrency(state.total)}</span>
                                 </div>
