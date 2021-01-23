@@ -21,6 +21,16 @@ body {
         @include color(primary, lighter);
     }
 
+    .ks-form {
+        @include b($size: xxxs);
+
+        .ks-form-field {
+            .form-input {
+                @include b($size: xxxs);
+            }
+        }
+    }
+
     main {
         width: 100%;
         max-width: 100%;
