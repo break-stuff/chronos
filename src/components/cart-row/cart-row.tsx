@@ -36,7 +36,7 @@ export class CartRow {
     render() {
         return (
             <Host class="cart-row">
-                <ks-card class="mb-md shadow-none b-none" img-src={this.item.imageUrl} img-width="83" img-height="100" alt={`image of watch (${this.item.sku})`} img-direction="left">
+                <ks-card class="mb-md shadow-none b-none" img-src={this.item.imageUrl} img-width="83" img-height="100" alt={`image of watch (${this.item.sku})`} img-direction="left" lazy>
                     <div class="display-flex">
                         <div class="product-details mr-md">
                             <div class="product-name">
