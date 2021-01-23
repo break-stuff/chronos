@@ -43,7 +43,6 @@ export class PageHeader implements ComponentInterface {
                                         <stencil-route-link url={`/products/${x.urlSegment}`}>{x.name}</stencil-route-link>
                                     </ks-dropdown-item>))}
                                 </ks-dropdown>
-                                <stencil-route-link url="/stories">Stories</stencil-route-link>
                                 <stencil-route-link url="/about">About</stencil-route-link>
                                 <stencil-route-link url="/contact">Contact</stencil-route-link>
                             </div>
