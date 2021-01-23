@@ -18,7 +18,7 @@ export class CategoryGallery {
             <Host class="category-gallery">
                 {this.categories.length
                     ? <ks-gallery heading="Product Line" class="categories" item-width="350px">
-                        {this.categories.map(x => <ks-card img-src={x.imageUrl} alt={x.name} href={`products/${x.urlSegment}`} class="shadow-none bg-white" img-aspect-ratio="2:1" clickable>
+                        {this.categories.map(x => <ks-card img-src={x.imageUrl} alt={x.name} href={`products/${x.urlSegment}`} class="shadow-none bg-white" img-aspect-ratio="2:1" clickable lazy>
                             <h3 class="mt-auto text-center">{x.name}</h3>
                         </ks-card>)}
                         <div class="display-flex align-center justify-center p-xxxl">
