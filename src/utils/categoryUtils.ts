@@ -1,5 +1,6 @@
 import * as fetch from './fetch';
 import categoryStore from '../store/categoryStore';
+import { sortArray } from './arrayUtils';
 
 export type Category = {
     id: number,
@@ -18,5 +19,5 @@ export async function getAllCategories(): Promise<Category[]> {
         categoryStore.categories = categories;
     }
 
-    return categories;
+    return sortArray(categories, 'name');
 }
