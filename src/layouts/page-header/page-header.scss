@@ -78,16 +78,17 @@
                 .search {
                     background-color: transparent;
                     @include p(none);
-                    @include b(solid, xxxs, dark, lighter);
+                    @include b(solid, xxxs, light);
+                    @include shadow(inner);
 
                     .ks-form-field {
                         .form-input {
                             border: 0;
+                            background-color: transparent;
                             @include shadow(none);
                         }
 
                         .icon-right {
-                            transform: translate(30%, -55%);
                             @include m(none);
 
                             .icon {

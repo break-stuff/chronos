@@ -1,7 +1,9 @@
-import { Component, h, State, ComponentInterface, Host, Element } from '@stencil/core';
+import { Component, h, State, ComponentInterface, Host, Element, Prop, Event, EventEmitter } from '@stencil/core';
+import { RouterHistory, injectHistory } from '@stencil/router';
 import { getAllCategories, Category } from '../../utils/categoryUtils';
 import { sortArray } from "../../utils/arrayUtils";
 import state from "../../store/cartStore";
+import { IFormFieldData } from 'kickstand-ui/dist/types/scripts/components/form-field/form-field';
 
 @Component({
     tag: 'page-header',
@@ -13,18 +15,38 @@ export class PageHeader implements ComponentInterface {
 
     @Element() $el: HTMLElement;
 
+    @Prop() history: RouterHistory;
+
     @State() categories: Category[];
+    @State() search: string = '';
+
+    @Event() searched!: EventEmitter<string>;
 
     async componentWillLoad() {
         let response = await getAllCategories();
         this.categories = sortArray(response, 'name');
     }
 
+    componentDidLoad() {
+        this.search = this.history?.location.query.search || '';
+    }
+
     componentDidRender() {
         Array.from(this.$mobileMenu.querySelectorAll('a'))
             .forEach(element => element.addEventListener('click', () => this.$mobileMenu.hide()));
-        
+
         this.$cartSummary = this.$el.querySelector('cart-summary');
+    }
+
+    private searchProducts(formData: IFormFieldData[]) {
+        setTimeout(() => {
+            const searchTerm = encodeURIComponent(formData[0].value as string);
+
+            if (searchTerm && !window.location.pathname.includes('products'))
+                this.history.push(`/products/view-all?search=${searchTerm}`);
+            else
+                this.searched.emit(formData[0].value as string);
+        });
     }
 
     render() {
@@ -47,9 +69,9 @@ export class PageHeader implements ComponentInterface {
                                 <stencil-route-link url="/contact">Contact</stencil-route-link>
                             </div>
                             <div class="right-menu">
-                                <ks-form class="search" inline>
-                                    <ks-form-field type="search" label="search" size="sm" hide-label></ks-form-field>
-                                    <ks-button display="clear" size="sm">
+                                <ks-form class="search" inline onSubmitted={(e) => this.searchProducts(e.detail.formFieldData)}>
+                                    <ks-form-field id="site_search" value={this.search} type="search" label="search" size="sm" hide-label></ks-form-field>
+                                    <ks-button display="clear" size="sm" type="submit">
                                         <ks-icon icon="search" label="search"></ks-icon>
                                     </ks-button>
                                 </ks-form>
@@ -87,3 +109,5 @@ export class PageHeader implements ComponentInterface {
         );
     }
 }
+
+injectHistory(PageHeader);

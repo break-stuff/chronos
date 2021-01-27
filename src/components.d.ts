@@ -6,7 +6,7 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { CartItem } from "./utils/cartUtils";
-import { MatchResults } from "@stencil/router";
+import { MatchResults, RouterHistory } from "@stencil/router";
 import { Product } from "./utils/productUtils";
 export namespace Components {
     interface AboutPage {
@@ -37,6 +37,7 @@ export namespace Components {
     interface PageFooter {
     }
     interface PageHeader {
+        "history": RouterHistory;
     }
     interface ProductDetailsPage {
         "match": MatchResults;
@@ -45,6 +46,7 @@ export namespace Components {
         "product": Product;
     }
     interface ProductsPage {
+        "history": RouterHistory;
         "match": MatchResults;
     }
     interface StarComponent {
@@ -196,6 +198,8 @@ declare namespace LocalJSX {
     interface PageFooter {
     }
     interface PageHeader {
+        "history"?: RouterHistory;
+        "onSearched"?: (event: CustomEvent<string>) => void;
     }
     interface ProductDetailsPage {
         "match"?: MatchResults;
@@ -205,6 +209,7 @@ declare namespace LocalJSX {
         "product"?: Product;
     }
     interface ProductsPage {
+        "history"?: RouterHistory;
         "match"?: MatchResults;
     }
     interface StarComponent {
