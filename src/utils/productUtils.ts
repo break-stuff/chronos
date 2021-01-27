@@ -1,5 +1,6 @@
 import * as fetch from './fetch';
 import productStore from '../store/productStore';
+import { pageArray, sortArray } from './arrayUtils';
 
 export type Product = {
     id: number,
@@ -17,10 +18,15 @@ export type Product = {
     relatedProducts: Product[]
 };
 
+export type PagedProducts = {
+    products: Product[],
+    pageCount: number
+};
+
 export async function getAllProducts(): Promise<Product[]> {
     let products = productStore.products;
 
-    if(!products.length) {
+    if (!products.length) {
         products = await fetch.get<Product[]>('/assets/data/products.json');
         productStore.products = products;
     }
@@ -32,7 +38,7 @@ export async function getProductBySku(sku: string): Promise<Product> {
     let products = await getAllProducts();
     let product = products.find(x => x.sku === sku);
 
-    if(!product)
+    if (!product)
         return undefined;
 
     product.accessory = await getRandomAccessory();
@@ -42,11 +48,11 @@ export async function getProductBySku(sku: string): Promise<Product> {
 }
 
 export function formatCurrency(price: number) {
-    return new Intl.NumberFormat('en-US', {style: 'currency', currency: 'USD'}).format(price);
+    return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(price);
 }
 
 export async function getRandomAccessory(): Promise<Product> {
-    let productId = Math.floor(Math.random()  * (19 - 16 + 1) + 16);
+    let productId = Math.floor(Math.random() * (19 - 16 + 1) + 16);
     let products = await getAllProducts();
 
     return products.find(x => x.id === productId);
@@ -62,4 +68,49 @@ export async function getRelatedProducts(): Promise<Product[]> {
     }
 
     return relatedProducts;
+}
+
+export async function getPagedProducts(categoryId: number, searchTerm: string, sortBy: string, pageSize: number, pageNumber: number): Promise<PagedProducts> {
+    let products = await getAllProducts();
+    let filteredProducts = getProductsByCategoryId(categoryId, products);
+
+    filteredProducts = getProductsBySearchTerm(searchTerm, filteredProducts);
+
+    let sortedProducts = sortProductList(filteredProducts, sortBy);
+
+    return { 
+        products: pageArray(sortedProducts, pageSize, pageNumber),
+        pageCount: Math.ceil(filteredProducts.length / pageSize)
+    };
+}
+
+export function getProductsByCategoryId(categoryId: number, products: Product[]): Product[] {
+    return categoryId
+        ? products.filter(x => x.categoryId === categoryId)
+        : products;
+}
+
+function getProductsBySearchTerm(searchTerm: string, products: Product[]): Product[] {
+    return searchTerm
+        ? products = products.filter(x =>
+            x.name.toLowerCase().includes(searchTerm)
+            || x.description.toLowerCase().includes(searchTerm))
+        : products;
+}
+
+function sortProductList(products: Product[], sortBy: string) {
+    switch (sortBy) {
+        case 'a-z':
+            return sortArray(products, 'name');
+        case 'z-a':
+            return sortArray(products, 'name', true);
+        case 'price':
+            return sortArray(products, 'listPrice');
+        case 'price-desc':
+            return sortArray(products, 'listPrice', true);
+        case 'rating':
+            return sortArray(this.displayProducts, 'rating', true);
+        default:
+            return sortArray(products, 'id');
+    }
 }

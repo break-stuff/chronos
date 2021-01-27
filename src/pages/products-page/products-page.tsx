@@ -1,9 +1,9 @@
 import { Component, h, Prop, State, Watch, Host, Listen } from '@stencil/core';
 import { MatchResults } from '@stencil/router';
-import { getAllProducts, Product } from '../../utils/productUtils';
+import { getAllProducts, getPagedProducts, Product } from '../../utils/productUtils';
 import { Category, getAllCategories } from '../../utils/categoryUtils';
-import { sortArray, pageArray } from "../../utils/arrayUtils";
 import { addToCart } from "../../utils/cartUtils";
+import { RouterHistory } from '@stencil/router';
 
 @Component({
     tag: 'products-page',
@@ -11,11 +11,13 @@ import { addToCart } from "../../utils/cartUtils";
 })
 export class ProductsPage {
     @Prop() match: MatchResults;
+    @Prop() history: RouterHistory;
 
     @State() products: Product[] = [];
-    @State() filteredProducts: Product[] = [];
+    @State() displayProducts: Product[] = [];
     @State() categories: Category[] = [];
     @State() selectedCategory: Category;
+    @State() searchTerm: string;
     @State() selectedSort: string;
     @State() pageNumber: number = 1;
     @State() pageCount: number = 0;
@@ -35,34 +37,38 @@ export class ProductsPage {
     async componentWillLoad() {
         this.products = await getAllProducts();
         this.categories = await getAllCategories();
-        this.categories = sortArray(this.categories, 'name');
     }
 
     componentDidLoad() {
+        this.addSearchListener();
         this.filterProductsByUrlSegment();
+        this.searchClearHandler();
+    }
+
+    componentWillRender() {
+        this.searchTerm = this.history?.location.query.search?.toLowerCase();
+    }
+
+    private addSearchListener() {
+        const pageHeader = document.querySelector('page-header') as HTMLPageHeaderElement;
+        pageHeader.addEventListener('searched', (e) => {
+            this.searchTerm = e['detail'];
+            this.getProductList();
+        });
+    }
+
+    private searchClearHandler() {
+        const $search = document.querySelector('#site_search');
+        $search.addEventListener('cleared', () => {            
+            this.searchTerm = '';
+            this.getProductList();
+        });
     }
 
     private categoryChangedHandler(categoryId: any) {
         this.selectedCategory = this.categories.find(x => x.id === Number(categoryId));
         this.pageNumber = 1;
         this.getProductList();
-    }
-
-    private sortProductList(products: Product[], sortBy: string) {
-        switch (sortBy) {
-            case 'a-z':
-                return sortArray(products, 'name');
-            case 'z-a':
-                return sortArray(products, 'name', true);
-            case 'price':
-                return sortArray(products, 'listPrice');
-            case 'price-desc':
-                return sortArray(products, 'listPrice', true);
-            case 'rating':
-                return sortArray(this.filteredProducts, 'rating', true);
-            default:
-                return sortArray(products, 'id');
-        }
     }
 
     private sortChangedHandler(value: any | string) {
@@ -72,25 +78,16 @@ export class ProductsPage {
     }
 
     private filterProductsByUrlSegment() {
-        this.selectedCategory = this.categories.find(x => x.urlSegment === this.match.params.category) 
+        this.selectedCategory = this.categories.find(x => x.urlSegment === this.match.params.category)
             || this.categories.find(x => x.urlSegment === 'view-all');
-        console.log(this.match.params.category);
-        
+
         this.getProductList();
     }
 
-    private filterProductsBySelectedCategory() {
-        return this.selectedCategory
-            ? this.products.filter(x => x.categoryId === this.selectedCategory.id)
-            : this.products;
-    }
-
-    private getProductList() {
-        let filteredProducts = this.filterProductsBySelectedCategory();
-        let sortedProducts = this.sortProductList(filteredProducts, this.selectedSort);
-
-        this.filteredProducts = pageArray(sortedProducts, this.pageSize, this.pageNumber);
-        this.pageCount = Math.ceil(filteredProducts.length / this.pageSize);
+    private async getProductList() {
+        let pagedProducts = await getPagedProducts(this.selectedCategory?.id, this.searchTerm, this.selectedSort, this.pageSize, this.pageNumber);
+        this.displayProducts = pagedProducts.products;
+        this.pageCount = pagedProducts.pageCount;
         this.setPageIndicators();
     }
 
@@ -105,11 +102,7 @@ export class ProductsPage {
     private setPageNumber(page: number) {
         this.pageNumber = page;
         this.getProductList();
-        setTimeout(() => {
-            console.log('SCROLLING');
-            
-            window.scrollTo({top: 0, behavior: 'smooth'});
-        });
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
     render() {
@@ -133,7 +126,7 @@ export class ProductsPage {
                     </div>
                 </div>
                 <div class="display-flex flex-wrap -m-md">
-                    {this.filteredProducts.map(x => <product-summary product={x} class="w-25 md:w-33 sm:w-50 xs:w-100 p-md"></product-summary>)}
+                    {this.displayProducts.map(x => <product-summary product={x} class="w-25 md:w-33 sm:w-50 xs:w-100 p-md"></product-summary>)}
                 </div>
                 {this.pageNumbers.length > 1
                     ? <div class="paging-controls display-flex justify-center mt-xxxl">
