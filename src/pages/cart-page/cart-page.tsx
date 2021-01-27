@@ -33,7 +33,7 @@ export class CartPage {
     render() {
         return (
             <Host class="cart-page">
-                <h1>My Cart</h1>
+                <h1 class="mt-xl">My Cart</h1>
                 <ks-row gutter="xxxl" position="stretch">
                     <ks-column class="col-8 sm:col-12">
                         <div class="cart-items bg-white p-xxxl b-xxxs">
