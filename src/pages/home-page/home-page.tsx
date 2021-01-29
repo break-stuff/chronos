@@ -33,7 +33,7 @@ export class HomePage {
                         <p class="mb-lg">
                             <a href="https://github.com/ionic-team/stencil-router" target="_blank" rel="noopener">Stencil Router</a> was used to create the single-page application (SPA) functionality and <a href="https://stenciljs.com/docs/stencil-store" target="_blank" rel="noopener">Stencil Store</a> is used to manage the application's global state.
                         </p>
-                        <ks-button display="hollow">View Source Code</ks-button>
+                        <ks-button display="hollow" href="https://github.com/break-stuff/chronos" target="_blank">View Source Code</ks-button>
                     </ks-card-body>
                 </ks-card>
             </Host>
