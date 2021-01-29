@@ -18,17 +18,28 @@ export class AboutPage {
 
                 <p><em>"Why would you do that to yourself???"</em></p>
 
+                <h2>Problem</h2>
+
                 <p>
                     Don't get me wrong, I am a huge fan of front-end frameworks.
                     They provide a lot of great tools and features that make developer's lives easier.
-                    The downside to them is that they also come at a price: the size of the framework itself, additional code required to compose components and layouts, as well as the time it takes for the framework to render the code.
+                    The downside to them is that they also come at a price:
+
+                    <ul>
+                        <li>the size of the framework itself</li>
+                        <li>additional code required to compose components and layouts</li>
+                        <li>the time it takes for the framework to render the code</li>
+                    </ul>
                 </p>
+
+                <p><em>Is there was a way to get the same great experience front-end frameworks provide without the cost?</em></p>
 
                 <h2>Objective</h2>
 
                 <p>
-                    The goal of this project was to see how hard it would be to get the same great user and developer experience of those frameworks, but as lean and as light as possible.
-                    As it turns out, it wasn't very hard thanks to some great tools.
+                    The goal of this project was to see how hard it would be to create a lean, light, and performant Single-Page Application (SPA) without the use of a JavaScript framework.</p>
+
+                <p>As it turns out, it wasn't very hard thanks to some great tools.
                     Not only that, because the runs without a framework and is rendered by the browser rather than by a framework, it's <em>wicked</em> fast!
                 </p>
 
@@ -59,7 +70,7 @@ export class AboutPage {
 
                 <h2>Media</h2>
 
-                <p>We are grateful for the following talented artists at <ks-button href="https://unsplash.com/" display="link" target="_blank">Unsplash</ks-button> for providing the stock photos:</p>
+                <p>I am grateful for the following talented artists at <ks-button href="https://unsplash.com/" display="link" target="_blank">Unsplash</ks-button> for providing the stock photos:</p>
 
                 <ul>
                     <li>
@@ -77,22 +88,7 @@ export class AboutPage {
 
                 <h2>Trademarks</h2>
 
-                <p>ALLIED, AMERICAN DOCUMENTS, CAVATINA, COMMAND URBAN, E LOGO, EASY READER, EXPEDITION, FAMILYCONNECT, FAST WRAP, FLEX TECH, INDIGLO, ICONNECT LOGO, INTELLIGENT QUARTZ, IQ+, IT TAKES A LICKING AND KEEPS - TICKING, KEEP - TICKING, MARATHON, MARLIN, MK1, NIGHT-MODE, PERFECT DATE, QUICKDATE, SLEEK, SPECIALISTS IN THE ART OF TIMEKEEPING, SUPERNOVA, TAPSCREEN, TIME MACHINES, TIME-FACTORY, TIMEX, TIMEX COMMAND, TIMEX IN MAP LOGO, TRANSCEND, TRIATHLON, TRIBUTE, TRUE SINCE 1854 TIMEX, VARIETY, VIEWPOINT, WEEKENDER, WE DON’T STOP and the Triathlon watch design are trademarks of Timex Group B.V. and its subsidiaries.</p>
-
-                <p>IRONMAN® and MDOT are registered trademarks of World Triathlon Corporation. Used here by permission.</p>
-
-                <p>SiRF and the SiRF logo are registered trademarks of CSR. SiRFstarIV is a trademark of CSR.</p>
-
-                <p>ANT+ and the ANT+ Logo are trademarks of Dynastream Innovations, Inc.</p>
-
-                <p>SWAROVSKI is a registered trademark of Swarovski Aktiengesellschaft.</p>
-
-                <p>Runkeeper is a registered trademark of FitnessKeeper, Inc.  The Running Man Icon is a trademark of FitnessKeeper, Inc.  Both trademarks are used by Timex by permission.</p>
-
-                <p>The Bluetooth word mark and logos are registered trademarks owned by Bluetooth SIG, Inc. and any use of such marks by Timex is under license.</p>
-
-                <p>IOS is a trademark or registered trademark of Cisco in the US and other countries and is used under license.</p>
-
+                <p>All product content is from <ks-button href="timex.com" display="link" target="_blank">timex.com</ks-button> and products displayed in this site can be purchased there.</p>
             </div>
         );
     }
