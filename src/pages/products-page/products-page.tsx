@@ -59,7 +59,7 @@ export class ProductsPage {
 
     private searchClearHandler() {
         const $search = document.querySelector('#site_search');
-        $search.addEventListener('cleared', () => {            
+        $search.addEventListener('cleared', () => {
             this.searchTerm = '';
             this.getProductList();
         });
@@ -126,7 +126,9 @@ export class ProductsPage {
                     </div>
                 </div>
                 <div class="display-flex flex-wrap -m-md">
-                    {this.displayProducts.map(x => <product-summary product={x} class="w-25 md:w-33 sm:w-50 xs:w-100 p-md"></product-summary>)}
+                    {this.displayProducts.length > 0
+                        ? this.displayProducts.map(x => <product-summary product={x} class="w-25 md:w-33 sm:w-50 xs:w-100 p-md"></product-summary>)
+                        : <div class="text-lg text-bold my-xxxl py-xxxl">Sorry, no products were found.</div>}
                 </div>
                 {this.pageNumbers.length > 1
                     ? <div class="paging-controls display-flex justify-center mt-xxxl">
