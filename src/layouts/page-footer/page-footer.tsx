@@ -14,8 +14,7 @@ export class PageFooter {
                         <ks-column>
                             <h2>Quick Links</h2>
                             <div class="display-flex align-center">
-                                <stencil-route-link class="mr-md" url="/products">Products</stencil-route-link>
-                                <stencil-route-link class="mx-md" url="/stories">Stories</stencil-route-link>
+                                <stencil-route-link class="mr-md" url="/products/view-all">Products</stencil-route-link>
                                 <stencil-route-link class="mx-md" url="/about">About</stencil-route-link>
                                 <stencil-route-link class="mx-md" url="/contact">Contact</stencil-route-link>
                             </div>
@@ -124,19 +123,16 @@ export class PageFooter {
                             </div>
                         </ks-column>
                         <ks-column>
-                            <div class="display-flex space-between w-25 ml-auto text-md">
-                                <a href="#">
-                                    <ks-icon icon="facebook" label="facebook"></ks-icon>
-                                </a>
-                                <a href="#">
+                            <div class="display-flex space-between w-20 ml-auto text-md">
+                                <ks-button target="_blank" display="link" size="lg" color="dark" href="https://github.com/break-stuff/chronos">
+                                    <ks-icon icon="github" label="github"></ks-icon>
+                                </ks-button>
+                                <ks-button target="_blank" display="link" size="lg" color="dark" href="https://twitter.com/stuffbreaker">
                                     <ks-icon icon="twitter" label="twitter"></ks-icon>
-                                </a>
-                                <a href="#">
-                                    <ks-icon icon="instagram" label="instagram"></ks-icon>
-                                </a>
-                                <a href="#">
-                                    <ks-icon icon="pinterest" label="pinterest"></ks-icon>
-                                </a>
+                                </ks-button>
+                                <ks-button target="_blank" display="link" size="lg" color="dark" href="https://www.linkedin.com/in/burton-smith-48132a34/">
+                                    <ks-icon icon="linkedin" label="linkedin"></ks-icon>
+                                </ks-button>
                             </div>
                         </ks-column>
                     </ks-row>
