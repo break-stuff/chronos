@@ -1,7 +1,6 @@
 import { Component, h, State, ComponentInterface, Host, Element, Prop, Event, EventEmitter } from '@stencil/core';
 import { RouterHistory, injectHistory } from '@stencil/router';
 import { getAllCategories, Category } from '../../utils/categoryUtils';
-import { sortArray } from "../../utils/arrayUtils";
 import state from "../../store/cartStore";
 import { IFormFieldData } from 'kickstand-ui/dist/types/scripts/components/form-field/form-field';
 
@@ -23,8 +22,7 @@ export class PageHeader implements ComponentInterface {
     @Event() searched!: EventEmitter<string>;
 
     async componentWillLoad() {
-        let response = await getAllCategories();
-        this.categories = sortArray(response, 'name');
+        this.categories = await getAllCategories();
     }
 
     componentDidLoad() {

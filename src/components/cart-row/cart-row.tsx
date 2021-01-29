@@ -43,15 +43,15 @@ export class CartRow {
                                 <stencil-route-link url={`/product/${this.item.sku}`} onClick={() => this.$cartSummary.hide()}>{this.item.name}</stencil-route-link>
                             </div>
                             <div class="prices mt-md">
-                                {this.display 
-                                ? <span class="price">{this.item.quantity} x {formatCurrency(this.item.price)} = <span class="total text-md">{formatCurrency(this.item.price * this.item.quantity)}</span></span>
-                                : <strong class="price">{formatCurrency(this.item.price)}</strong>}
+                                {this.display
+                                    ? <span class="price">{this.item.quantity} x {formatCurrency(this.item.price)} = <span class="total text-md">{formatCurrency(this.item.price * this.item.quantity)}</span></span>
+                                    : <strong class="price">{formatCurrency(this.item.price)}</strong>}
                             </div>
                         </div>
                         {!this.display && <div class="cart-controls text-center ml-auto">
-                                <ks-form-field type="spin-box" value={this.quantity} label="Quantity" size="sm" hide-label onUpdated={(e) => this.updateCart(this.item.sku, e.detail.value)}></ks-form-field>
-                                <ks-button display="clear" size="sm" onClick={() => this.removeFromCart(this.item.sku)}>Remove</ks-button>
-                            </div>}
+                            <ks-form-field type="spin-box" value={this.quantity} label="Quantity" size="sm" hide-label onUpdated={(e) => this.updateCart(this.item.sku, e.detail.value)}></ks-form-field>
+                            <ks-button display="clear" size="sm" onClick={() => this.removeFromCart(this.item.sku)}>Remove</ks-button>
+                        </div>}
                     </div>
                 </ks-card>
             </Host>
