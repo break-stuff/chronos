@@ -21,6 +21,14 @@ body {
         @include color(primary, lighter);
     }
 
+    p {
+        @include mb(lg);
+    }
+
+    h2 {
+        @include mb(none);
+    }
+
     .ks-form {
         @include b($size: xxxs);
 
