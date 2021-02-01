@@ -8,6 +8,7 @@ export class HomePage {
     render() {
         return (
             <Host class="home-page">
+                <h1 class="sr-only">Welcome to the Chronos web component demo site!</h1>
                 <ks-card img-src="/assets/images/man_in_jacket_wearing_watch.jpg" alt="man in jacket wearing watch" img-direction="behind" img-aspect-ratio="2.9:1" class="hero-image full-width justify-center sm:justify-start b-none mb-xxxl">
                     <ks-card-body class="h-100 display-flex flex-column justify-center align-end text-center">
                         <div class="text-lg xs:text-sm">A demo e-commerce site built <span class="mr-xs text-italic text-underline">entirely</span> with</div>
