@@ -90,7 +90,7 @@ export function getProductsByCategoryId(categoryId: number, products: Product[])
         : products;
 }
 
-function getProductsBySearchTerm(searchTerm: string, products: Product[]): Product[] {
+export function getProductsBySearchTerm(searchTerm: string, products: Product[]): Product[] {
     return searchTerm
         ? products = products.filter(x =>
             x.name.toLowerCase().includes(searchTerm)
@@ -98,7 +98,7 @@ function getProductsBySearchTerm(searchTerm: string, products: Product[]): Produ
         : products;
 }
 
-function sortProductList(products: Product[], sortBy: string) {
+export function sortProductList(products: Product[], sortBy: string) {
     switch (sortBy) {
         case 'a-z':
             return sortArray(products, 'name');
