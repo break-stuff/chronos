@@ -8,11 +8,12 @@
     "build": "stencil build && cp ./src/_redirects ./www/_redirects",
     "deploy": "./deploy.sh",
     "test": "stencil test --spec",
+    "test:e2e": "stencil test --e2e",
     "test.watch": "stencil test --spec --e2e --watchAll",
     "generate": "stencil generate"
   },
   "devDependencies": {
-    "@stencil/core": "^2.0.0",
+    "@stencil/core": "2.4.0",
     "@stencil/postcss": "^2.0.0",
     "@stencil/router": "^1.0.1",
     "@stencil/sass": "^1.4.1",
