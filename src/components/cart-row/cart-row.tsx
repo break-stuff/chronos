@@ -50,7 +50,7 @@ export class CartRow {
                         </div>
                         {!this.display && <div class="cart-controls text-center ml-auto">
                             <ks-form-field type="spin-box" value={this.quantity} label="Quantity" size="sm" hide-label onUpdated={(e) => this.updateCart(this.item.sku, e.detail.value)}></ks-form-field>
-                            <ks-button display="clear" size="sm" onClick={() => this.removeFromCart(this.item.sku)}>Remove</ks-button>
+                            <ks-button class="remove" display="clear" size="sm" onClick={() => this.removeFromCart(this.item.sku)}>Remove</ks-button>
                         </div>}
                     </div>
                 </ks-card>
