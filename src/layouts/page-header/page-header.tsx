@@ -97,7 +97,6 @@ export class PageHeader implements ComponentInterface {
                                 {this.categories.map(x => (<stencil-route-link url={`/products/${x.urlSegment}`}>{x.name}</stencil-route-link>))}
                             </ks-accordion-slide>
                         </ks-accordion>
-                        <stencil-route-link url="/stories">Stories</stencil-route-link>
                         <stencil-route-link url="/about">About</stencil-route-link>
                         <stencil-route-link url="/contact">Contact</stencil-route-link>
                     </ks-side-drawer>
