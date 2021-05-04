@@ -1,0 +1,1 @@
+import{r as s,h as r,H as o}from"./p-db4e877b.js";const t=class{constructor(r){s(this,r)}render(){return r(o,{class:"menu-row"},r("slot",null))}};export{t as ks_menu_row}

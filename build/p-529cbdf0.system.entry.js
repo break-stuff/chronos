@@ -1,0 +1,1 @@
+System.register(["./p-f122fb29.system.js"],(function(t){"use strict";var e,r,n;return{setters:[function(t){e=t.r;r=t.h;n=t.H}],execute:function(){var o=t("ks_modal_footer",function(){function t(t){e(this,t)}t.prototype.render=function(){return r(n,{class:"modal-footer"},r("slot",null))};return t}())}}}));

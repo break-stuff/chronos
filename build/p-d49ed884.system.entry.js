@@ -1,0 +1,1 @@
+System.register(["./p-f122fb29.system.js"],(function(t){"use strict";var n,r,e;return{setters:[function(t){n=t.r;r=t.h;e=t.H}],execute:function(){var s=t("ks_menu_group",function(){function t(t){n(this,t);this.position="right"}t.prototype.render=function(){return r(e,{class:"menu-group align-"+this.position},r("slot",null))};return t}())}}}));

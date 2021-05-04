@@ -1,0 +1,1 @@
+import{r as l,h as t,H as s}from"./p-db4e877b.js";const o=class{constructor(t){l(this,t)}render(){return t(s,{class:"text-center p-xxxl"},t("div",{class:"p-xxxl m-xxxl"},t("h1",null,"404"),t("div",{class:"text-md mb-lg"},"Page Not Found"),t("stencil-route-link",{url:"/products/view-all"},t("ks-button",{display:"hollow"},"Back to Shopping"))))}};export{o as catch_all}

@@ -1,0 +1,1 @@
+import{r as o,h as s,H as r}from"./p-db4e877b.js";const t=class{constructor(s){o(this,s)}render(){return s(r,{class:"modal-footer"},s("slot",null))}};export{t as ks_modal_footer}

@@ -1,0 +1,1 @@
+import{c as s,s as a,g as t}from"./p-5f220563.js";const{state:e}=s({categories:[]});async function o(){let s=e.categories;return s.length||(s=await t("/assets/data/categories.json"),e.categories=s),a(s,"name")}export{o as g}
