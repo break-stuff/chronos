@@ -16,6 +16,15 @@ export const config: Config = {
       // comment the following line to disable service workers in production
       serviceWorker: null,
       baseUrl: 'https://chronos.kickstand-ui.com/',
+      copy: [
+        {
+          src: 'robots.txt'
+        },
+        {
+          src:'index.html',
+          dest: '404.html'
+        }
+      ]
     },
   ],
   plugins: [
